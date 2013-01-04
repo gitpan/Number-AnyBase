@@ -3,7 +3,7 @@
 # no critic
 package Number::AnyBase;
 {
-  $Number::AnyBase::VERSION = '1.50000';
+  $Number::AnyBase::VERSION = '1.50001';
 }
 ## use critic
 
@@ -218,7 +218,7 @@ Number::AnyBase - Converts decimals to and from any alphabet of any size (for sh
 
 =head1 VERSION
 
-version 1.50000
+version 1.50001
 
 =head1 SYNOPSIS
 
@@ -667,11 +667,11 @@ I<creative> uses, if a bit extravagant :-)
 =head2 DNA Compression
 
 This example shows how the I<bytes> alphabet can be used to effectively compress
-random data, when expressed in a shorter alphabet (the I<DNA> alphabet in
+random data, when expressed in a shorter alphabet (the I<DNA alphabet> in
 this case).
 
-If the data are randomized (i.e. not skewed), this technique easily beats any
-compression algorithm.
+If the data are sufficiently randomized (i.e. not skewed), this technique easily
+beats most general purpose compression algorithms.
 
 As shown below, the conversion to the bytes alphabet produces about a 40%
 better compression than zip (with default options).
@@ -734,14 +734,20 @@ produced string has only I<safe> characters.
     CTCCAGGCACCCTTCTTTCCTCTTCCCCTTGCCCTTGCCCTGACCTCCCAGCCCTATGGATGTGGGGTCCCCATC
     ATCCCAGCTGCTCCCAAATAAACTCCAGAAG
 
+Of course there is nothing magic here: this technique simply leads to a 2-bit
+representation for the original symbols (being them just 4).
+For truly random data, this is the best that can be done however (compression
+algorithms specifically tailored for DNA sequences there exist, but they still
+leverage on some data pattern repetitions to get better results).
+
 =head2 Binary-to-text Encoding
 
 In a sense, this example is the opposite of the previous one: this time the
 target alphabet is shorter than the source one, therefore the resulting string
 is longer than the original one. There is an advantage however: the resulting
 string contains only I<safe> characters (while the original string is in general
-binary), and can therefore be trasmitted/embedded where binary data would have
-caused problems.
+binary), and it can therefore be trasmitted/embedded where binary data would
+have caused problems.
 
 Working on the whole original string rather than on blocks, the technique shown
 below easily beats any binary-to-text standard algorithm (the efficiency of
@@ -754,7 +760,7 @@ comparison (to be fair, the C<Number::AnyBase> ascii alphabet has also more than
 
 Also note how, in order to maximize the efficiency, C<Number::AnyBase> lets
 freely choose the bignum library (in this case the excellent C<Math::GMP>),
-even when converting to decimals.
+even when converting (to decimals) from arbitrary alphabets.
 
     use strict;
     use warnings;
