@@ -31,4 +31,4 @@ resources:
   bugtracker: http://rt.cpan.org/NoAuth/Bugs.html?Dist=Number-AnyBase
   homepage: http://search.cpan.org/dist/Number-AnyBase
   repository: git://github.com/emazep/Number-AnyBase.git
-version: 1.50002
+version: 1.60000
